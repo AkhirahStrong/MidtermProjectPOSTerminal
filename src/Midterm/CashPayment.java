@@ -1,17 +1,57 @@
 package Midterm;
 
+import java.util.Scanner;
+
+//implemented initial methods and fields + getters n setters
 public class CashPayment extends Payment {
+	protected double amountTendered;
+	protected double changeDue;
 	
-	//Fields:
-	//amountTendered
-	//changeProvided
+	public CashPayment(double subtotal, double salesTax, double taxRate, double total) {
+		super(subtotal, salesTax, taxRate, total);
+
+	}
+	public void change() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter Cash amount");
+		double amountTendered = scan.nextDouble();
+		changeBack(amountTendered);
+		printChangeInfo();
+		scan.close();
+	}
 	
-	//Constructor
-	
-	//Method: take amount of money and give change
-	
-	//override toString()
-	
-	//getters and setters
+	// Method: take amount of money and give change
+	public double changeBack(double amountTendered) {
+		changeDue = amountTendered - getTotal();
+
+		return changeDue;
+
+	}
+	//v method to be called after changeBack v
+	public void printChangeInfo() {
+	System.out.println("Your change due is : " + changeDue);
+		
+	}
+
+	public double getAmountTendered() {
+		return amountTendered;
+	}
+
+	public void setAmountTendered(double amountTendered) {
+		this.amountTendered = amountTendered;
+	}
+
+	public double getChangeDue() {
+		return changeDue;
+	}
+
+	public void setChangeDue(double changeDue) {
+		this.changeDue = changeDue;
+	}
+
+
+	// override toString()
+
+	// getters and setters
 
 }
