@@ -3,7 +3,7 @@ package Midterm;
 import java.util.Scanner;
 
 public class CryptoPayment {
-	// Akhirah
+
 	
 	
 		//Fields
@@ -28,6 +28,7 @@ public class CryptoPayment {
 		//Methods
 		
 		//This method takes in user wallet address and validates the length of the string. 
+
 		public static String walletAddress() {
 			Scanner scan = new Scanner(System.in);
 			
@@ -41,17 +42,20 @@ public class CryptoPayment {
 				return keyReturn;
 			}else {
 				scan.close();
+
 			return address;
 			}
 		}
 		
 		//This method takes in user private key and validates the length of the string.
+
 		public static String privateKey() {
 			String key;
 			
 			Scanner scan = new Scanner(System.in);
 			System.out.println("Please enter your private key");
 			 key = scan.nextLine();
+
 			if(key.length() < 10 || key.length()> 20) {
 				return "The private key you entered is invalet (the length is incorrect)";
 			}else {
