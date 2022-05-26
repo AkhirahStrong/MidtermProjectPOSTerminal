@@ -1,7 +1,7 @@
 package Midterm;
 
 public class CryptoPayment {
-	// Akhirah
+
 	//Fields
 	//Wallet
 	//key
