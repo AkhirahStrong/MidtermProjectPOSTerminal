@@ -5,6 +5,7 @@ public abstract class Payment {
 	//Fields 
 	protected double subtotal;
 	protected double salesTax;
+	// should taxRate be a final variable?
 	protected double taxRate = .06;
 	protected double total;
 	
@@ -25,7 +26,7 @@ public abstract class Payment {
 	}
 	
 	
-	//Gitters/Seters
+	//Getters/Setters
 	public double getSubtotal() {
 		return subtotal;
 	}
@@ -35,17 +36,20 @@ public abstract class Payment {
 	}
 
 	public double getSalesTax() {
+		
 		return salesTax;
 	}
-
+	
 	public void setSalesTax(double salesTax) {
+		// added formula to calculate sales tax
+		salesTax = getSubtotal() * getTaxRate(); 
 		this.salesTax = salesTax;
 	}
 
 	public double getTaxRate() {
 		return taxRate;
 	}
-
+	// should not need this setter as the tax rate is static
 	public void setTaxRate(double taxRate) {
 		this.taxRate = taxRate;
 	}
@@ -55,6 +59,8 @@ public abstract class Payment {
 	}
 
 	public void setTotal(double total) {
+		// added formula to calculate total
+		total = getSubtotal() + getSalesTax();
 		this.total = total;
 	}
 	
