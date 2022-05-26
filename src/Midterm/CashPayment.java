@@ -10,9 +10,10 @@ public class CashPayment extends Payment {
 
 	
 	public CashPayment(double subtotal, double salesTax, double taxRate, double total) {
-		super(subtotal, salesTax, taxRate, total);
+		super(subtotal, salesTax, 0.06, total);
 
 	}
+	// method for taking in amountTendered and distributing change
 	public void change() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter Cash amount");
