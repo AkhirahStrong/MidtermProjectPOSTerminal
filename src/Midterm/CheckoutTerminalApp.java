@@ -9,8 +9,10 @@ public class CheckoutTerminalApp {
 		CashPayment test = new CashPayment(0, 0, 0, 20);
 		//test.change();
 		
-		CryptoPayment pay = new CryptoPayment("1234567890", "ahky1234564578");
-		System.out.println(pay);
+//		CryptoPayment pay = new CryptoPayment("1234567890", "ahky1234564578");
+//		System.out.println(pay);
+		
+		CryptoPayment.walletAddress();
 	}
 
 }

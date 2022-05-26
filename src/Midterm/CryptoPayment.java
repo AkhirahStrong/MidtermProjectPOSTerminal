@@ -28,20 +28,30 @@ public class CryptoPayment {
 		//Methods
 		
 		//This method takes in user wallet address and validates the length of the string. 
-		public static String walletAddress(Scanner scan) {
+		public static String walletAddress() {
+			Scanner scan = new Scanner(System.in);
+			
 			System.out.println("Please enter your waller address");
 			String address = scan.nextLine();
-			if(address.length() < 10 || address.length()> 20) {
+			String keyReturn = privateKey();
+			
+			if(address.length() >= 10 || address.length()> 20) {
 				return "The walet address you entered is invalet (not enough characters)";
+			}else if(address.length() < 10 || address.length()<= 20){
+				return keyReturn;
 			}else {
+				scan.close();
 			return address;
 			}
 		}
 		
 		//This method takes in user private key and validates the length of the string.
-		public String privateKey(Scanner scan) {
+		public static String privateKey() {
+			String key;
+			
+			Scanner scan = new Scanner(System.in);
 			System.out.println("Please enter your private key");
-			String key = scan.nextLine();
+			 key = scan.nextLine();
 			if(key.length() < 10 || key.length()> 20) {
 				return "The private key you entered is invalet (the length is incorrect)";
 			}else {
