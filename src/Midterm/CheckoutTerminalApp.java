@@ -6,7 +6,8 @@ public class CheckoutTerminalApp {
 		// TODO Auto-generated method stub
 		
 		Products.productList();
-
+		CashPayment bob = new CashPayment(0, 0, 0, 28);
+		bob.change();
 	}
 
 }

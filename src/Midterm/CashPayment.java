@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 //implemented initial methods and fields + getters n setters
 public class CashPayment extends Payment {
+
 	protected double amountTendered;
 	protected double changeDue;
+
 	
 	public CashPayment(double subtotal, double salesTax, double taxRate, double total) {
 		super(subtotal, salesTax, taxRate, total);
