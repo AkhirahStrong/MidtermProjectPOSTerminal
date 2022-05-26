@@ -18,7 +18,7 @@ public class CashPayment extends Payment {
 		System.out.println("Enter Cash amount");
 		double amountTendered = scan.nextDouble();
 		changeBack(amountTendered);
-		printChangeInfo();
+		System.out.println("Your change due is: $" + changeDue);
 		scan.close();
 	}
 	
@@ -28,11 +28,6 @@ public class CashPayment extends Payment {
 
 		return changeDue;
 
-	}
-	//v method to be called after changeBack v
-	public void printChangeInfo() {
-	System.out.println("Your change due is : " + changeDue);
-		
 	}
 
 	public double getAmountTendered() {
