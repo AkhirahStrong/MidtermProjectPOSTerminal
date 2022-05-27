@@ -14,5 +14,13 @@ class POSTest {
 		assertEquals(expected, result);
 		
 	}
+	@Test
+	void changeTest2() {
+		CashPayment test = new CashPayment(11, 45, 32, 55);
+		double expected = 45;
+		double result = test.changeBack(100);
+		assertEquals(expected, result);
+		
+	}
 
 }
