@@ -2,22 +2,21 @@ package Midterm;
 
 import java.util.Scanner;
 
-public class CryptoPayment {
+public class CryptoPayment extends Payment{
 
+	//Fields
+	protected String walletAddress;
+	protected String privateKey;
 	
 	
-		//Fields
-		protected String walletAddress;
-		protected String privateKey;
-		
-		
-		//constructor
-		public CryptoPayment(String walletAddress, String privateKey) {
-			this.walletAddress = walletAddress;
-			this.privateKey = privateKey;
-		}
+		public CryptoPayment(double subtotal, double salesTax, double taxRate, double total, String walletAddress, String privateKey) {
+		super(subtotal, salesTax, taxRate, total);
+		this.walletAddress = walletAddress;
+		this.privateKey = privateKey;
+	}
 
 
+		
 		//override toString()
 		@Override
 		public String toString() {
@@ -25,46 +24,35 @@ public class CryptoPayment {
 		}
 		
 		
+
+		
+		
 		//Methods
 		
 		//This method takes in user wallet address and validates the length of the string. 
 
-		public static String walletAddress() {
+		public static void walletAddress() {
 			Scanner scan = new Scanner(System.in);
 			
 			System.out.println("Please enter your waller address");
 			String address = scan.nextLine();
-			String keyReturn = privateKey();
 			
-			if(address.length() >= 10 || address.length()> 20) {
-				return "The walet address you entered is invalet (not enough characters)";
-			}else if(address.length() < 10 || address.length()<= 20){
-				return keyReturn;
-			}else {
-				scan.close();
-
-			return address;
+			if(address.length() < 10 || address.length() > 20) {
+				System.out.println("Please inter a valid address.");
+			}else if(address.length() <= 10 || address.length()<= 20){
+				String key;
+				
+				System.out.println("Please enter your private key");
+				 key = scan.nextLine();
+				 if(key.length() < 10 || key.length()> 20) {
+						System.out.println("Please inter a valid Key");
+					}else {
+					System.out.println("yes");
+					}
 			}
 		}
 		
-		//This method takes in user private key and validates the length of the string.
-
-		public static String privateKey() {
-			String key;
-			
-			Scanner scan = new Scanner(System.in);
-			System.out.println("Please enter your private key");
-			 key = scan.nextLine();
-
-			if(key.length() < 10 || key.length()> 20) {
-				return "The private key you entered is invalet (the length is incorrect)";
-			}else {
-			return key;
-			}
-			
-			
-			
-		}
+		
 
 
 		//getters / setters

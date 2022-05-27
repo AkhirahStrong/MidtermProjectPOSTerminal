@@ -22,5 +22,23 @@ class POSTest {
 		assertEquals(expected, result);
 		
 	}
+	@Test
+	void walletAddressTest() {
+		CryptoPayment test1 = new CryptoPayment(0, 0, 0, 0, "1234567890", "ahky123456");
+		String expected = "1234567890";
+		String result = test1.walletAddress;
+		assertEquals(expected, result);
+		
+	}
+	@Test
+	void privateKeyTest() {
+		CryptoPayment test2 = new CryptoPayment(0, 0, 0, 0, "1234567890", "ahky123456");
+		String expected = "ahky123456";
+		String result = test2.privateKey;
+		assertEquals(expected, result);
+		
+	}
+	
+	
 
 }
