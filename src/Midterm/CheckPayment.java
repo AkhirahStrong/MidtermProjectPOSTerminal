@@ -10,7 +10,8 @@ public class CheckPayment extends Payment {
 
 	}
 
-//if else statements nested in a do-while loop function to continuously ask for a check # until a valid number is entered within the specified range
+
+
 	public void check() {
 		System.out.println("Please input a check number: ");
 		Scanner scan = new Scanner(System.in);
