@@ -29,30 +29,46 @@ public class CryptoPayment extends Payment{
 		
 		//Methods
 		
-		//This method takes in user wallet address and validates the length of the string. 
+		//This method takes in user wallet address as well as the private key to validates the length of the string. 
 
 		public static void walletAddress() {
 			Scanner scan = new Scanner(System.in);
+			String address;
+			String key;
+			
 			
 			System.out.println("Please enter your waller address");
-			String address = scan.nextLine();
+			address = scan.nextLine();
 			
-			if(address.length() < 10 || address.length() > 20) {
-				System.out.println("Please inter a valid address.");
-			}else if(address.length() <= 10 || address.length()<= 20){
-				String key;
+			
+			while(address.length() < 10 || address.length() > 20){
 				
-				System.out.println("Please enter your private key");
-				 key = scan.nextLine();
+				
+				if(address.length() < 10 || address.length() > 20) {
+					System.out.println("Please inter a valid address.");
+					address = scan.nextLine();
+					}	
+			}
+			
+			
+			System.out.println("Please enter your private key");
+			key = scan.nextLine();
+			
+			while(key.length() >= 10 || key.length() <= 20){
+				
+				
 				 if(key.length() < 10 || key.length()> 20) {
 						System.out.println("Please inter a valid Key");
-					}else {
-					System.out.println("yes");
+						key = scan.nextLine();
 					}
 			}
+			
 		}
 		
-		
+		public static String goodBye() {
+			String bye = "Thank you!";
+			return bye;
+		}
 
 
 		//getters / setters
