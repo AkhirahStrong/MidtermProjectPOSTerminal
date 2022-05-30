@@ -12,6 +12,7 @@ public class CreditCardPayment extends Payment {
 	protected String cardNumber;
 	protected String expiration;
 	protected String cvvCode;
+	protected String userPin;
 	// getters - do we need setters as we are not storing this information within
 	// the system????
 
@@ -39,56 +40,87 @@ public class CreditCardPayment extends Payment {
 		this.cvvCode = cvvCode;
 	}
 
+	public String getUserPin() {
+		return userPin;
+	}
+
+	public void setUserPin(String cardNumber) {
+		this.userPin = cardNumber;
+	}
+
 	// Constructor
 	public CreditCardPayment(double subtotal, double salesTax, double taxRate, double total) {
 		super(subtotal, salesTax, taxRate, total);
-		
+
 	}
 
 	public void runCredit() {
+
 		Scanner scan = new Scanner(System.in);
 		// regex card type validators
-		
+
+		// assure that its correctly formatted or the right type of numbers and/or the
+		// right type of card?
+
+		// validate that card number style matches the cards we want to take
+		// (visa/mastercard/amex)
+
+		// are the numbers valid???
+
 		// Visa cards begin with a 4 and 16 digits
 		String visa = "[4]\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d";
 		String visaSpaced = "[4]\\d\\d\\d\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d";
-		
+
 		// Mastercard cards begin with a 5 and has 16 digits
 		String masterCard = "[5]\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d";
 		String masterCardSpaced = "[5]\\d\\d\\d\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d";
-		
+
 		// American Express cards begin with a 3, followed by a 4 or a 7 has 15 digits
 		String amex = "[3][47]\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d";
 		String amexSpaced = "[3][47]\\d\\d\\s\\d\\d\\d\\d\\d\\d\\s\\d\\d\\d\\d\\d";
-		
+
 		// Discover cards begin with a 6 and have 16 digits - do we want to add?
 		String discoverCard = "[6]\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d";
 		String discoverCardSpaced = "[6]\\d\\d\\d\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d\\s\\d\\d\\d\\d";
-		
-		// date formats MM/YY or MMYY
-		String date = "\\d\\d\\/\\d\\d";
-		String dateNoSlash = "\\d\\d\\d\\d";
-		
+
+		// date formats MM/YY or MMYY -- allowing months to start with 0 or 1 and days
+		// to start with 0, 1, 2, or 3
+		String date = "[01]\\d\\/[0123]\\d";
+		String dateNoSlash = "[01]\\d[0123]\\d";
+
 		// CVV formats 3 or 4 digits
 		String cvvCode3 = "\\d\\d\\d";
 		String cvvCode4 = "\\d\\d\\d\\d";
-		
-		
-		
-		// assure that its correctly formatted or the right type of numbers and/or the
-		// right type of card?
-		// validate that card number style matches the cards we want to take
-		// (visa/mastercard/amex)
-		// take in credit card info
-		// are the numbers valid???
+		// pin format 4 digits
+		String pin = "\\d{4}";
+
 		boolean cardAccepted = false;
 		boolean dateAccepted = false;
 		boolean cvvAccepted = false;
-		
+		boolean debitAccepted = false;
+		boolean pinAccepted = false;
 		String cardType = "";
+		// debit variables
+		int debitOrCredit = 1;
+
+		// additional functionality for debit
+
 		// card number validation
 		while (cardAccepted == false) {
-			System.out.println("Please enter your credit card number:");
+			System.out.println("Enter 1 for Credit, Enter 2 for Debit.");
+			// parseInt should fix scanner issue bypassing next scanner
+			debitOrCredit = Integer.parseInt(scan.nextLine());
+			if (debitOrCredit == 2) {
+				debitAccepted = true;
+				if (debitAccepted == true) {
+					// bypass date and cvv if running as debit
+					dateAccepted = true;
+					cvvAccepted = true;
+				}
+			}
+
+			System.out.println("Please enter your card number:");
+
 			setCardNumber(scan.nextLine());
 			if (getCardNumber().matches(visa)) {
 				cardType = "Visa";
@@ -117,8 +149,19 @@ public class CreditCardPayment extends Payment {
 			} else {
 				System.out.println("Declined.");
 				System.out.println(
-						"Your credit card number does not match either Visa, MasterCard, Discover or American Express, please try again or select a new payment method.");
+						"Your card number does not match either Visa, MasterCard, Discover or American Express, please try again or select a new payment method.");
 				cardAccepted = false;
+			}
+		}
+
+		while (pinAccepted == false && debitAccepted == true) {
+
+			System.out.println("Please enter your pin:");
+			setUserPin(scan.nextLine());
+			if (getUserPin().matches(pin)) {
+				pinAccepted = true;
+			} else {
+				System.out.println("Your 4 digit pin is invalid, try again.");
 			}
 		}
 
@@ -135,28 +178,30 @@ public class CreditCardPayment extends Payment {
 				dateAccepted = false;
 			}
 		}
-		
-		// cvv validation - ensure that the cvv type matches card type (all but amex take a 3 digit cvv, amex takes 4)
+
+		// cvv validation - ensure that the cvv type matches card type (all but amex
+		// take a 3 digit cvv, amex takes 4)
 		while (cvvAccepted == false) {
 			System.out.println("Please enter the CVV code:");
 			setCvvCode(scan.nextLine());
-			if (getCvvCode().matches(cvvCode3) && ((cardType.matches("Mastercard"))) || (cardType.matches("Visa")) || (cardType.matches("Discover"))) {
+			if (getCvvCode().matches(cvvCode3) && ((cardType.matches("Mastercard"))) || (cardType.matches("Visa"))
+					|| (cardType.matches("Discover"))) {
 				cvvAccepted = true;
-			} else 	if ((getCvvCode().matches(cvvCode4)) && ((cardType.matches("American Express")))) {
+			} else if ((getCvvCode().matches(cvvCode4)) && ((cardType.matches("American Express")))) {
 				cvvAccepted = true;
 			} else {
 				System.out.println("Your CVV Code is invalid, please enter the 3 or 4 security digit code.");
 			}
-			
+
 		}
-		
+
 		System.out.println("Processing...");
 		System.out.println("Your transaction has been approved.");
-		
+
 		scan.close();
-	
+
 	}
-	
+
 	// override toString()
 	@Override
 	public String toString() {
