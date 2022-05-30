@@ -11,13 +11,13 @@ public class CheckoutTerminalApp {
 //		CheckPayment cheque = new CheckPayment(85, 77, 88, 99);
 //		cheque.check();
 //		
-//		CreditCardPayment creditCardPayment = new CreditCardPayment(0, 0, 0, 25.00);
-//		creditCardPayment.runCredit();
+		CreditCardPayment creditCardPayment = new CreditCardPayment(0, 0, 0, 25.00);
+		creditCardPayment.runCredit();
 		
 //	CryptoPayment pay = new CryptoPayment("1234567890", "ahky1234564578");
 //	System.out.println(pay);
 		
-		CryptoPayment.walletAddress();
+//  	CryptoPayment.walletAddress();
 
 
 

@@ -64,8 +64,5 @@ public abstract class Payment {
 		this.total = total;
 	}
 	
-	
-	
-	
-
+			
 }
