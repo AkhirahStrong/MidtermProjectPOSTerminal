@@ -26,14 +26,47 @@ public class Products {
 		this.amountOfProduct = amountOfProduct; 
 	}
 	
-	public void printInfo(Products a) {
+	public void printInfo() {
 		System.out.println(getCategory() + ": " + getName() + ", " + getSize() + ", " + getDescription()+ ", $" + getPrice() );
 	}
 	
 	//Method for storing
-	public static void productList() {
+	public static ArrayList<Products> productList() {
 		
-		ArrayList<Products> list = new ArrayList<Products>();
+	    ArrayList<Products> list = new ArrayList<Products>();
+		Products blankStarter = new Products(" ", " ", " ", 0.0, " ", 0);
+		list.add(blankStarter);
+		Products baseballCap1 = new Products("Tigers Limited", "Blue and white", "Baseball Cap", 150.00, "One Size Fits All", 4);
+		list.add(baseballCap1);
+		Products baseballCap2 = new Products("Lions", "Blue and Grey", "Baseball Cap", 25.00, "One Size Fits All", 1);
+		list.add(baseballCap2);
+		Products baseballCap3 = new Products("Red Wings", "Red and White", "Baseball Cap", 30.00, "One Size Fits All", 2);
+		list.add(baseballCap3);
+		Products baseballCap4 = new Products("Pistons", "Red and Blue", "Baseball Cap", 15.00, "One Size Fits All", 4);
+		list.add(baseballCap4);
+		Products beanie1 = new Products("Nike", "Black", "Beanie", 10.00, "Large", 3);
+		list.add(beanie1);
+		Products beanie2 = new Products("Adidas", "Red", "Beanie", 10.00, "Medium", 2);
+		list.add(beanie2);
+		Products beanie3 = new Products("Puma", "Black and White", "Beanie", 10.00, "Small", 1);
+		list.add(beanie3);
+		Products beanie4 = new Products("Carhartt", "Beige", "Beanie", 25.00, "Large", 2);
+		list.add(beanie4);
+		Products fitted1 = new Products("Patagonia", "Orange", "Fitted", 35.00, "Large", 3);
+		list.add(fitted1);
+		Products fitted2 = new Products("Izod", "Green", "Fitted", 40.00, "Medium", 1);
+		list.add(fitted2);
+		Products fitted3 = new Products("Columbia", "Gray", "Fitted", 30.00, "Small", 4);
+		list.add(fitted3);
+		Products fitted4 = new Products("New Era", "Red and White", "Fitted", 25.00, "Large", 3);
+		list.add(fitted4);
+		return list;
+	}
+public static ArrayList<Products> productListDisplay() {
+		
+	    ArrayList<Products> list = new ArrayList<Products>();
+		Products blankStarter = new Products(" ", " ", " ", 0.0, " ", 0);
+		list.add(blankStarter);
 		Products baseballCap1 = new Products("Tigers Limited", "Blue and white", "Baseball Cap", 150.00, "One Size Fits All", 4);
 		list.add(baseballCap1);
 		Products baseballCap2 = new Products("Lions", "Blue and Grey", "Baseball Cap", 25.00, "One Size Fits All", 1);
@@ -59,18 +92,19 @@ public class Products {
 		Products fitted4 = new Products("New Era", "Red and White", "Fitted", 25.00, "Large", 3);
 		list.add(fitted4);
 		
-		list.get(0).printInfo(baseballCap1);
-		list.get(1).printInfo(baseballCap2);
-		list.get(2).printInfo(baseballCap3);
-		list.get(3).printInfo(baseballCap4);
-		list.get(4).printInfo(beanie1);
-		list.get(5).printInfo(beanie2);
-		list.get(6).printInfo(beanie3);
-		list.get(7).printInfo(beanie4);
-		list.get(8).printInfo(fitted1);
-		list.get(9).printInfo(fitted2);
-		list.get(10).printInfo(fitted3);
-		list.get(11).printInfo(fitted4);
+		list.get(1).printInfo();
+		list.get(2).printInfo();
+		list.get(3).printInfo();
+		list.get(4).printInfo();
+		list.get(5).printInfo();
+		list.get(6).printInfo();
+		list.get(7).printInfo();
+		list.get(8).printInfo();
+		list.get(9).printInfo();
+		list.get(10).printInfo();
+		list.get(11).printInfo();
+		list.get(12).printInfo();
+		return list;
 	}
 
 
