@@ -7,17 +7,15 @@ public class CheckoutTerminalApp {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		// suggestion to change Hats Shop to Hat Shop - sam
-		System.out.println("Welcome to The Hats Shop! \nHere's what we have for sale: \n");
+		System.out.println("Welcome to The Hat Shop! \nHere's what we have for sale: \n");
 		// added a new line between "here's what we have for sale" and product display so it doesn't look so clustered - sam
 		Products.productListDisplay();
-		// added a new line between product display to break things up a bit - sam
-		System.out.println();
 		// if we are telling them to select a number, we need to provide a number somewhere within the array list that we are drawing from -sam
-		System.out.println("Please select which hat you would like to purchase (1-12):");
+		System.out.println("\nPlease select which hat you would like to purchase (1-12):");
 		int select = scan.nextInt();
 		System.out.println("Excellent choice! You ordered our:");
 		Products.productList().get(select).printInfo();
+		String itemsOrdered = Products.productList().get(select).itemsOrdered();
 		
 			System.out.println("How many of this style would you like?");
 			int quantity = scan.nextInt();
@@ -33,61 +31,68 @@ public class CheckoutTerminalApp {
 		
 		double lineTotal = (Products.productList().get(select).getPrice() * quantity);
 		System.out.println("Your running total is: " + lineTotal);
-		System.out
-				.println("Would you like to order anything else? (Press 1 for Yes or press 2 to continue to checkout)");
+		System.out.println("Would you like to order anything else? (Press 1 for Yes or press 2 to continue to checkout)");
 		int yn = scan.nextInt();
 
 		if (yn == 1) {
-			orderItems(lineTotal);
+			orderItems(lineTotal, itemsOrdered);
 		} else if (yn == 2) {
 			double salesTax = lineTotal * 0.06;
 			double subTotal = lineTotal * 1.06;
 			System.out.println("Total: " + lineTotal);
 			System.out.println("Sales Tax: " + salesTax);
 			System.out.println("SubTotal: " + subTotal);
+			System.out.println("How would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
+			String paySelect = " ";
+			int payNum = scan.nextInt();
+			if(payNum == 1) {
+				paySelect = "Credit";
+				 CreditCardPayment creditCardPay = new CreditCardPayment(lineTotal, 0, 0, 25.00);
+				 creditCardPay.runCredit();
+			}else if(payNum == 2) {
+				paySelect = "Cash";
+				CashPayment cashPay = new CashPayment(subTotal, 0, 0, 20);
+				cashPay.change();
+			}else if(payNum == 3) {
+				paySelect = "Check";
+				CheckPayment checkPay = new CheckPayment(85, 77, 88, 99);
+				checkPay.check();
+			}else if(payNum == 4) {
+				paySelect = "Crypto";
+				CryptoPayment.walletAddress();
+				CryptoPayment.goodBye();
+			}
+			reciept(lineTotal, subTotal, paySelect, itemsOrdered);
 		} else {
 			System.out.println("Error! Please enter a valid number");
 		}
-		System.out.println("How would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
-		String paySelect;
-		int payNum = scan.nextInt();
-		if(payNum == 1) {
-			paySelect = "Credit";
-			 CreditCardPayment creditCardPay = new CreditCardPayment(lineTotal, 0, 0, 25.00);
-			 creditCardPay.runCredit();
-		}else if(payNum == 2) {
-			paySelect = "Cash";
-			CashPayment cashPay = new CashPayment(0, 0, 0, 20);
-			cashPay.change();
-		}else if(payNum == 3) {
-			paySelect = "Check";
-			CheckPayment checkPay = new CheckPayment(85, 77, 88, 99);
-			checkPay.check();
-		}else if(payNum == 4) {
-			paySelect = "Crypto";
-			CryptoPayment.walletAddress();
-			CryptoPayment.goodBye();
-		}
+		
+		
+		
+		
+		
 		// closed scanner
 		scan.close();
 	}
 
 	public ArrayList<Products> orderList(ArrayList<Products> list, int quantity) {
-
+		//System.out.println(ArrayList<Products> orderList.get(Select) + "Amount: " + quantity);
+		
 		return orderList(list, quantity);
 	}
 
-	public static void orderItems(double lineTotal) {
+	
+	public static void orderItems(double lineTotal, String itemsOrdered) {
 		// similar methodology to what's written in the main, but as it's in a method the
 		// machine won't get confused
 		Scanner scan = new Scanner(System.in);
 		System.out.println();
 		Products.productListDisplay();
-		System.out.println();
-		System.out.println("Please select which hat you would like to purchase (1-12):");
+		System.out.println("\nPlease select which hat you would like to purchase (1-12):");
 		int select = scan.nextInt();
 		System.out.println("Excellent choice! You ordered our:");
 		Products.productList().get(select).printInfo();
+		String itemsOrdered2 = Products.productList().get(select).itemsOrdered() + "\n" + itemsOrdered;
 		System.out.println("How many of this style would you like?");
 		int quantity = scan.nextInt();
 		if (Products.productList().get(select).getAmountOfProduct() >= quantity) {
@@ -106,9 +111,36 @@ public class CheckoutTerminalApp {
 		System.out.println("Total: " + totalFinal);
 		System.out.println("Sales Tax: " + salesTax);
 		System.out.println("SubTotal: " + subTotal);
-
-		// closed scanner
-		scan.close();
+		System.out.println("How would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
+		String paySelect = " ";
+		int payNum = scan.nextInt();
+		if(payNum == 1) {
+			paySelect = "Credit";
+			 CreditCardPayment creditCardPay = new CreditCardPayment(lineTotal, 0, 0, 25.00);
+			 creditCardPay.runCredit();
+		}else if(payNum == 2) {
+			paySelect = "Cash";
+			CashPayment cashPay = new CashPayment(subTotal, 0, 0, 20);
+			cashPay.change();
+		}else if(payNum == 3) {
+			paySelect = "Check";
+			CheckPayment checkPay = new CheckPayment(85, 77, 88, 99);
+			checkPay.check();
+		}else if(payNum == 4) {
+			paySelect = "Crypto";
+			CryptoPayment.walletAddress();
+			CryptoPayment.goodBye();
+		}
+		reciept(totalFinal, subTotal, paySelect, itemsOrdered2);
 	}
+	public static void reciept(double total, double subTotal, String paySelect, String itemsOrdered) {
+		System.out.println("RECIEPT INFO");
+		System.out.println("Items ordered: " + itemsOrdered);
+		System.out.println("Total: " + total);
+		System.out.println("Subtotal: " + subTotal);
+		System.out.println("Payment Method: " + paySelect);
+		
+	}
+	
 
 }

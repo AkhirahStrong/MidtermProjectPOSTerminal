@@ -29,6 +29,9 @@ public class Products {
 	public void printInfo() {
 		System.out.println(getCategory() + ": " + getName() + ", " + getSize() + ", " + getDescription()+ ", $" + getPrice() );
 	}
+	public String itemsOrdered() {
+		return(getName() + ", " + getCategory() + ", " + getPrice());
+	}
 	
 	//Method for storing
 	public static ArrayList<Products> productList() {

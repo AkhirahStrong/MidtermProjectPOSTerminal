@@ -25,7 +25,7 @@ public class CashPayment extends Payment {
 	
 	// Method: take amount of money and give change
 	public double changeBack(double amountTendered) {
-		changeDue = amountTendered - getTotal();
+		changeDue = amountTendered - getSubtotal();
 
 		return changeDue;
 
