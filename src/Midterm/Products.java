@@ -27,10 +27,10 @@ public class Products {
 	}
 	
 	public void printInfo() {
-		System.out.println(getCategory() + ": " + getName() + ", " + getSize() + ", " + getDescription()+ ", $" + getPrice() );
+		System.out.println(getCategory() + ": " + getName() + ", " + getSize() + ", " + getDescription()+ ", $" + String.format("%.2f", getPrice()));
 	}
 	public String itemsOrdered() {
-		return(getName() + ", " + getCategory() + ", " + getPrice());
+		return(getName() + ", " + getCategory() + ", " + String.format("%.2f", getPrice()));
 	}
 	
 	//Method for storing
@@ -149,6 +149,7 @@ public static ArrayList<Products> productListDisplay() {
 
 
 	public double getPrice() {
+		
 		return price;
 	}
 
@@ -185,7 +186,8 @@ public static ArrayList<Products> productListDisplay() {
 	//Method for displaying
 	
 	//override toString()
-	
-	
+	public void currencyRound() {
+		
+	}
 
 }
