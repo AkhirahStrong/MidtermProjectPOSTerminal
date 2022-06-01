@@ -37,7 +37,7 @@ public class CryptoPayment extends Payment{
 			String key;
 			
 			
-			System.out.println("Please enter your waller address");
+			System.out.println("Please enter your wallet address:");
 			address = scan.nextLine();
 			
 			
@@ -45,24 +45,25 @@ public class CryptoPayment extends Payment{
 				
 				
 				if(address.length() < 10 || address.length() > 20) {
-					System.out.println("Please inter a valid address.");
+					System.out.println("Please enter a valid address:");
 					address = scan.nextLine();
 					}	
 			}
 			
 			
-			System.out.println("Please enter your private key");
+			System.out.println("Please enter your private key:");
 			key = scan.nextLine();
 			
 			while(key.length() >= 10 || key.length() <= 20){
 				
 				
 				 if(key.length() < 10 || key.length()> 20) {
-						System.out.println("Please inter a valid Key");
+						System.out.println("Please inter a valid key:");
 						key = scan.nextLine();
 					}
 			}
-			
+			// closed the scanner - sam
+			scan.close();
 		}
 		
 		public static String goodBye() {

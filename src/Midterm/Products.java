@@ -36,7 +36,7 @@ public class Products {
 	    ArrayList<Products> list = new ArrayList<Products>();
 		Products blankStarter = new Products(" ", " ", " ", 0.0, " ", 0);
 		list.add(blankStarter);
-		Products baseballCap1 = new Products("Tigers Limited", "Blue and white", "Baseball Cap", 150.00, "One Size Fits All", 4);
+		Products baseballCap1 = new Products("Tigers Limited", "Blue and White", "Baseball Cap", 150.00, "One Size Fits All", 4);
 		list.add(baseballCap1);
 		Products baseballCap2 = new Products("Lions", "Blue and Grey", "Baseball Cap", 25.00, "One Size Fits All", 1);
 		list.add(baseballCap2);

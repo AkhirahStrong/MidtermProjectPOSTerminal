@@ -149,7 +149,7 @@ public class CreditCardPayment extends Payment {
 			} else {
 				System.out.println("Declined.");
 				System.out.println(
-						"Your card number does not match either Visa, MasterCard, Discover or American Express, please try again or select a new payment method.");
+						"We only accept Visa, MasterCard, Discover or American Express, please try again or select a new payment method.");
 				cardAccepted = false;
 			}
 		}
@@ -180,7 +180,7 @@ public class CreditCardPayment extends Payment {
 		}
 
 		// cvv validation - ensure that the cvv type matches card type (all but amex
-		// take a 3 digit cvv, amex takes 4)
+		// takes a 3 digit cvv, amex takes 4)
 		while (cvvAccepted == false) {
 			System.out.println("Please enter the CVV code:");
 			setCvvCode(scan.nextLine());

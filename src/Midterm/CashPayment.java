@@ -16,7 +16,7 @@ public class CashPayment extends Payment {
 	
 	public void change() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter Cash amount");
+		System.out.println("Enter cash amount:");
 		double amountTendered = scan.nextDouble();
 		changeBack(amountTendered);
 		System.out.println("Your change due is: $" + changeDue);
