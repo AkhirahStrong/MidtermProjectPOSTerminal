@@ -41,7 +41,6 @@ public abstract class Payment {
 	}
 	
 	public void setSalesTax(double salesTax) {
-		// added formula to calculate sales tax
 		salesTax = getSubtotal() * getTaxRate(); 
 		this.salesTax = salesTax;
 	}
