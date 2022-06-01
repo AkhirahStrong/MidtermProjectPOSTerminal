@@ -39,9 +39,12 @@ public class CheckoutTerminalApp {
 		} else if (yn == 2) {
 			double salesTax = lineTotal * 0.06;
 			double subTotal = lineTotal * 1.06;
-			System.out.println("Total: " + lineTotal);
-			System.out.println("Sales Tax: " + salesTax);
-			System.out.println("SubTotal: " + subTotal);
+			System.out.printf("Total: $%.2f", lineTotal);
+			System.out.println("\n");
+			System.out.printf("Sales Tax: $%.2f", salesTax);
+			System.out.println("\n");
+			System.out.printf("SubTotal: $%.2f", subTotal);
+			System.out.println("\n");
 			System.out.println("How would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
 			String paySelect = " ";
 			int payNum = scan.nextInt();
@@ -108,7 +111,7 @@ public class CheckoutTerminalApp {
 		// (sam) i think we have a sales tax field in the payment method we can pull from but how to do it...? we could potentially have this class extend Payment as well?
 		double salesTax = totalFinal * 0.06;
 		double subTotal = totalFinal * 1.06;
-		System.out.println("Total: " + totalFinal);
+		System.out.printf("Total: $%.2f", lineTotal + "\n");
 		System.out.println("Sales Tax: " + salesTax);
 		System.out.println("SubTotal: " + subTotal);
 		System.out.println("How would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
@@ -136,7 +139,7 @@ public class CheckoutTerminalApp {
 	public static void reciept(double total, double subTotal, String paySelect, String itemsOrdered) {
 		System.out.println("RECIEPT INFO");
 		System.out.println("Items ordered: " + itemsOrdered);
-		System.out.println("Total: " + total);
+		System.out.printf("Total: $%.2f" , total);
 		System.out.println("Subtotal: " + subTotal);
 		System.out.println("Payment Method: " + paySelect);
 		
