@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class CheckoutTerminalApp {
 
 	public static void main(String[] args) {
+		int menuRepeat;
 		Scanner scan = new Scanner(System.in);
+//		do {
 		System.out.println("Welcome to The Hat Shop! \nHere's what we have for sale: \n");
 		// added a new line between "here's what we have for sale" and product display so it doesn't look so clustered - sam
 		Products.productListDisplay();
@@ -39,10 +41,10 @@ public class CheckoutTerminalApp {
 		} else if (yn == 2) {
 			double salesTax = lineTotal * 0.06;
 			double subTotal = lineTotal * 1.06;
-			System.out.println("Total: " + lineTotal);
-			System.out.println("Sales Tax: " + salesTax);
-			System.out.println("SubTotal: " + subTotal);
-			System.out.println("How would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
+			System.out.printf("Total: $%.2f", lineTotal);
+			System.out.printf("\n" + "Sales Tax: $%.2f", + salesTax);
+			System.out.printf("\n" + "SubTotal: $%.2f", + subTotal);
+			System.out.println("\nHow would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
 			String paySelect = " ";
 			int payNum = scan.nextInt();
 			if(payNum == 1) {
@@ -62,16 +64,14 @@ public class CheckoutTerminalApp {
 				CryptoPayment.walletAddress();
 				CryptoPayment.goodBye();
 			}
-			reciept(lineTotal, subTotal, paySelect, itemsOrdered);
+			receipt(lineTotal, subTotal, paySelect, itemsOrdered);
 		} else {
 			System.out.println("Error! Please enter a valid number");
 		}
+	//	System.out.println("Would you like to redisplay the menu and make a new order? (Press 1 for yes, 2 for no)");
+	//	 menuRepeat = scan.nextInt();
+	//	}while(menuRepeat ==1);
 		
-		
-		
-		
-		
-		// closed scanner
 		scan.close();
 	}
 
@@ -108,10 +108,10 @@ public class CheckoutTerminalApp {
 		// (sam) i think we have a sales tax field in the payment method we can pull from but how to do it...? we could potentially have this class extend Payment as well?
 		double salesTax = totalFinal * 0.06;
 		double subTotal = totalFinal * 1.06;
-		System.out.println("Total: " + totalFinal);
-		System.out.println("Sales Tax: " + salesTax);
-		System.out.println("SubTotal: " + subTotal);
-		System.out.println("How would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
+		System.out.printf("\n" +"Total: $%.2f", totalFinal);
+		System.out.printf("\n" + "Sales Tax: $%.2f", salesTax);
+		System.out.printf("\n" + "SubTotal: $%.2f", subTotal);
+		System.out.println("\nHow would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
 		String paySelect = " ";
 		int payNum = scan.nextInt();
 		if(payNum == 1) {
@@ -131,11 +131,11 @@ public class CheckoutTerminalApp {
 			CryptoPayment.walletAddress();
 			CryptoPayment.goodBye();
 		}
-		reciept(totalFinal, subTotal, paySelect, itemsOrdered2);
+		receipt(totalFinal, subTotal, paySelect, itemsOrdered2);
 	}
-	public static void reciept(double total, double subTotal, String paySelect, String itemsOrdered) {
-		System.out.println("RECIEPT INFO");
-		System.out.println("Items ordered: " + itemsOrdered);
+	public static void receipt(double total, double subTotal, String paySelect, String itemsOrdered) {
+		System.out.println("\nRECIEPT INFO");
+		System.out.println("Items ordered: " + "\n" + itemsOrdered);
 		System.out.println("Total: " + total);
 		System.out.println("Subtotal: " + subTotal);
 		System.out.println("Payment Method: " + paySelect);
