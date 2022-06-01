@@ -1,0 +1,45 @@
+
+
+
+
+	#The method below has a Time Complexity issue.
+	#The reason for the Time Complexity is the size of the method itself has a lot of code.
+	#The reason for the length is, when I use the key method within the wallet address method, 
+	#the key method would override the validation.
+	
+	public static void walletAddress() {
+			Scanner scan = new Scanner(System.in);
+			
+			#These variables aren't used outside of the the block of code the create for
+			#so it could be formed and initialize within the block of code.  
+			String address;
+			String key;
+			
+			
+			System.out.println("Please enter your wallet address:");
+			 address = scan.nextLine();
+			
+			
+			while(address.length() < 10 || address.length() > 20){
+				
+				
+				if(address.length() < 10 || address.length() > 20) {
+					System.out.println("Please enter a valid address:");
+					address = scan.nextLine();
+					}	
+			}
+			
+			
+			System.out.println("Please enter your private key:");
+			key = scan.nextLine();
+			
+			while(key.length() >= 10 || key.length() <= 20){
+				
+				
+				 if(key.length() < 10 || key.length()> 20) {
+						System.out.println("Please enter a valid key:");
+						key = scan.nextLine();
+					}
+			}
+			scan.close();
+		}
