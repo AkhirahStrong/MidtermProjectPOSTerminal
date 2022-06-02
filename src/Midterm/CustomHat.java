@@ -9,13 +9,13 @@ public class CustomHat extends Products {
 			int amountOfProduct) {
 		super(menuNumber, name, description, category, price, size, amountOfProduct);
 		
-		// this.menuNumber = menuNumber; 
+		this.menuNumber = menuNumber; 
 		this.name = name;
 		this.description = description;
 		this.category = category;
 		this.price = price;
 		this.size = size;
-		// this.amountOfProduct = amountOfProduct; 
+		this.amountOfProduct = amountOfProduct; 
 		
 		
 	}
@@ -39,9 +39,9 @@ public class CustomHat extends Products {
 		String size = scan.nextLine().toUpperCase();
 		setSize(size);
 		}
-//		ArrayList<Products> hat = new ArrayList<Products>();
-//		Products custom = new Products(0, getName(), getDescription(), getCategory(), 45, getSize(), 1);
-//		hat.add(custom);
+		ArrayList<Products> hat = new ArrayList<Products>();
+		Products custom = new Products(0, getName(), getDescription(), getCategory(), 45, getSize(), 1);
+		hat.add(custom);
 		
 	}
 	
