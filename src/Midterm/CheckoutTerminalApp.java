@@ -16,8 +16,8 @@ public class CheckoutTerminalApp {
 		System.out.println("Excellent choice! You ordered our:");
 		Products.productList().get(select).printInfo();
 		String itemsOrdered = Products.productList().get(select).itemsOrdered();
-		
 		int quantity;
+		
 		do {
 		System.out.println("How many of this style would you like?");
 		quantity = scan.nextInt();
@@ -46,6 +46,7 @@ public class CheckoutTerminalApp {
 			System.out.println("\nHow would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
 			String paySelect = " ";
 			int payNum = scan.nextInt();
+			
 			if (payNum == 1) {
 				paySelect = "Credit";
 				CreditCardPayment creditCardPay = new CreditCardPayment(lineTotal, 0, 0, 25.00);
@@ -102,6 +103,7 @@ public class CheckoutTerminalApp {
 					+ " of this style in stock, please select an amount in range.");
 		}
 		} while (quantity > Products.productList().get(select).getAmountOfProduct());
+		
 		double subTotal = (Products.productList().get(select).getPrice() * quantity + lineTotal);
 		double salesTax = subTotal * 0.06;
 		double finalTotal = subTotal * 1.06;
@@ -111,6 +113,7 @@ public class CheckoutTerminalApp {
 		System.out.println("\nHow would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
 		String paySelect = " ";
 		int payNum = scan.nextInt();
+		
 		if (payNum == 1) {
 			paySelect = "Credit";
 			CreditCardPayment creditCardPay = new CreditCardPayment(lineTotal, 0, 0, 25.00);
