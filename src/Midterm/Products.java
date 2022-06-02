@@ -39,8 +39,8 @@ public class Products {
 	public static ArrayList<Products> productList() {
 		
 	    ArrayList<Products> list = new ArrayList<Products>();
-		Products blankStarter = new Products(0, " ", " ", " ", 0.0, " ", 0);
-		list.add(blankStarter);
+//		Products blankStarter = new Products(0, " ", " ", " ", 0.0, " ", 0);
+//		list.add(blankStarter);
 		Products baseballCap1 = new Products(1,"Tigers Limited", "Blue and White", "Baseball Cap", 150.00, "One Size Fits All", 4);
 		list.add(baseballCap1);
 		Products baseballCap2 = new Products(2, "Lions", "Blue and Grey", "Baseball Cap", 25.00, "One Size Fits All", 1);
@@ -70,8 +70,8 @@ public class Products {
 public static ArrayList<Products> productListDisplay() {
 		
 	    ArrayList<Products> list = new ArrayList<Products>();
-		Products blankStarter = new Products(0, " ", " ", " ", 0.0, " ", 0);
-		list.add(blankStarter);
+//		Products blankStarter = new Products(0, " ", " ", " ", 0.0, " ", 0);
+//		list.add(blankStarter);
 		Products baseballCap1 = new Products(1, "Tigers Limited", "Blue and white", "Baseball Cap", 150.00, "One Size Fits All", 4);
 		list.add(baseballCap1);
 		Products baseballCap2 = new Products(2, "Lions", "Blue and Grey", "Baseball Cap", 25.00, "One Size Fits All", 1);
@@ -97,6 +97,7 @@ public static ArrayList<Products> productListDisplay() {
 		Products fitted4 = new Products(12, "New Era", "Red and White", "Fitted", 25.00, "Large", 3);
 		list.add(fitted4);
 		
+		list.get(0).printInfo();
 		list.get(1).printInfo();
 		list.get(2).printInfo();
 		list.get(3).printInfo();
@@ -108,7 +109,7 @@ public static ArrayList<Products> productListDisplay() {
 		list.get(9).printInfo();
 		list.get(10).printInfo();
 		list.get(11).printInfo();
-		list.get(12).printInfo();
+		
 		return list;
 	}
 
