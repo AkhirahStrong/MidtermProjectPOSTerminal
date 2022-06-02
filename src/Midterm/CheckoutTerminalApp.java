@@ -129,16 +129,16 @@ public class CheckoutTerminalApp {
 		}else if(payNum == 4) {
 			paySelect = "Crypto";
 			CryptoPayment.walletAddress();
-			CryptoPayment.goodBye();
 		}
 		receipt(finalTotal, subTotal, paySelect, itemsOrdered2);
 	}
 	public static void receipt(double total, double subTotal, String paySelect, String itemsOrdered) {
-		System.out.println("\nRECIEPT INFO");
+		System.out.println("Thank you for your business!");
+		System.out.println("\nRECEIPT INFO");
 		System.out.println("Items ordered: " + "\n" + itemsOrdered);
-		System.out.println("Subtotal: " + subTotal);
-		System.out.println("Total: " + total);
-		System.out.println("Payment Method: " + paySelect);
+		System.out.printf("Subtotal: $%.2f", subTotal);
+		System.out.printf("\n" + "Total: $%.2f", total);
+		System.out.println("\nPayment Method: " + paySelect);
 		
 	}
 	
