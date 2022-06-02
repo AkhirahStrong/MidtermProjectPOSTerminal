@@ -1,6 +1,5 @@
 package Midterm;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CheckoutTerminalApp {
@@ -60,7 +59,7 @@ public class CheckoutTerminalApp {
 				creditCardPay.runCredit();
 			} else if (payNum == 2) {
 				paySelect = "Cash";
-				CashPayment cashPay = new CashPayment(finalTotal, 0, 0, 20);
+				CashPayment cashPay = new CashPayment(0, 0, 0, finalTotal);
 				cashPay.change();
 			} else if (payNum == 3) {
 				paySelect = "Check";
@@ -82,11 +81,7 @@ public class CheckoutTerminalApp {
 	} 
 	
 
-	public ArrayList<Products> orderList(ArrayList<Products> list, int quantity) {
-
-
-		return orderList(list, quantity);
-	}
+	//V METHODS V
 
 	public static void orderItems(double lineTotal, String itemsOrdered) {
 
@@ -134,7 +129,7 @@ public class CheckoutTerminalApp {
 			creditCardPay.runCredit();
 		} else if (payNum == 2) {
 			paySelect = "Cash";
-			CashPayment cashPay = new CashPayment(finalTotal, 0, 0, 20);
+			CashPayment cashPay = new CashPayment(0, 0, 0, finalTotal);
 			cashPay.change();
 		} else if (payNum == 3) {
 			paySelect = "Check";

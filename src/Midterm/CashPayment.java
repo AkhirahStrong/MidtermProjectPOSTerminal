@@ -20,12 +20,11 @@ public class CashPayment extends Payment {
 		double amountTendered = scan.nextDouble();
 		changeBack(amountTendered);
 		System.out.println("Your change due is: $" + changeDue);
-//		scan.close();
 	}
 	
 	// Method: take amount of money and give change
 	public double changeBack(double amountTendered) {
-		changeDue = amountTendered - getSubtotal();
+		changeDue = amountTendered - getTotal();
 
 		return changeDue;
 

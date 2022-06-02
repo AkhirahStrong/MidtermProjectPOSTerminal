@@ -23,6 +23,23 @@ class POSTest {
 		
 	}
 	@Test
+	void changeTest3() {
+		CashPayment test = new CashPayment(11, 45, 32, 55.5);
+		double expected = 44.5;
+		double result = test.changeBack(100);
+		assertEquals(expected, result);
+		
+	}
+	@Test
+	void changeTest4() {
+		CashPayment test = new CashPayment(11, 45, 32, 55.45);
+		double expected = 44.55;
+		double result = test.changeBack(100);
+		assertEquals(expected, result);
+		
+	}
+	
+	@Test
 	void walletAddressTest1() {
 		CryptoPayment test1 = new CryptoPayment(0, 0, 0, 0, "12345678901234567890123456");
 		String expected = "12345678901234567890123456";
