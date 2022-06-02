@@ -127,7 +127,7 @@ public class CreditCardPayment extends Payment {
 		System.out.println("Processing...");
 		System.out.println("Your transaction has been approved.");
 
-		scan.close();
+//		scan.close();
 
 	}
 

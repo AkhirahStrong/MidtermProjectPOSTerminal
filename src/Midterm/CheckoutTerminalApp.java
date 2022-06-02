@@ -8,13 +8,9 @@ public class CheckoutTerminalApp {
 	public static void main(String[] args) {
 		int menuRepeat;
 		Scanner scan = new Scanner(System.in);
-//		do {
+		do {
 		System.out.println("Welcome to The Hat Shop! \nHere's what we have for sale: \n");
-		// added a new line between "here's what we have for sale" and product display
-		// so it doesn't look so clustered - sam
 		Products.productListDisplay();
-		// if we are telling them to select a number, we need to provide a number
-		// somewhere within the array list that we are drawing from -sam
 		System.out.println("\nPlease select which hat you would like to purchase (1-12):");
 		int select = scan.nextInt() - 1;
 		System.out.println("Excellent choice! You ordered our:");
@@ -69,26 +65,23 @@ public class CheckoutTerminalApp {
 			receipt(finalTotal, lineTotal, paySelect, itemsOrdered);
 		} else {
 			System.out.println("Error! Please enter a valid number.");
-		}
-		// System.out.println("Would you like to redisplay the menu and make a new
-		// order? (Press 1 for yes, 2 for no)");
-		// menuRepeat = scan.nextInt();
-		// }while(menuRepeat ==1);
-
+		} 
+		System.out.println("Would you like to redisplay the menu and make a neworder? (Press 1 for yes, 2 for no)");
+		menuRepeat = scan.nextInt();
+		}while(menuRepeat ==1);
 		scan.close();
-	}
+		
+	} 
+	
 
 	public ArrayList<Products> orderList(ArrayList<Products> list, int quantity) {
-		// System.out.println(ArrayList<Products> orderList.get(Select) + "Amount: " +
-		// quantity);
+
 
 		return orderList(list, quantity);
 	}
 
 	public static void orderItems(double lineTotal, String itemsOrdered) {
-		// similar methodology to what's written in the main, but as it's in a method
-		// the
-		// machine won't get confused
+
 		Scanner scan = new Scanner(System.in);
 		System.out.println();
 		Products.productListDisplay();
@@ -110,9 +103,6 @@ public class CheckoutTerminalApp {
 		}
 		} while (quantity > Products.productList().get(select).getAmountOfProduct());
 		double subTotal = (Products.productList().get(select).getPrice() * quantity + lineTotal);
-		// (sam) i think we have a sales tax field in the payment method we can pull
-		// from but how to do it...? we could potentially have this class extend Payment
-		// as well?
 		double salesTax = subTotal * 0.06;
 		double finalTotal = subTotal * 1.06;
 		System.out.printf("\n" + "SubTotal: $%.2f", subTotal);

@@ -45,7 +45,7 @@ public class CryptoPayment extends Payment{
 						address = scan.nextLine();
 						}	
 				}
-				scan.close();
+//				scan.close();
 			}
 
 
