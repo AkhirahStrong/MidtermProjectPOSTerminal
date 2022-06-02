@@ -20,20 +20,19 @@ public class CheckoutTerminalApp {
 		System.out.println("Excellent choice! You ordered our:");
 		Products.productList().get(select).printInfo();
 		String itemsOrdered = Products.productList().get(select).itemsOrdered();
-
+		
+		int quantity;
+		do {
 		System.out.println("How many of this style would you like?");
-		int quantity = scan.nextInt();
+		quantity = scan.nextInt();
 		if (Products.productList().get(select).getAmountOfProduct() >= quantity) {
-			System.out.println("You've ordered " + quantity + " hat(s)");
+			System.out.println("You've ordered " + quantity + " of these hats.");
 		} else {
 			System.out.println("Error! We only have " + Products.productList().get(select).getAmountOfProduct()
-					+ " of this style in stock, please select an amount in range");
-			System.out.println("How many of this style would you like?");
-			quantity = scan.nextInt();
-			System.out.println("You've ordered " + quantity + " hat(s)");
-			
+					+ " of this style in stock, please select an amount in range.");
 		}
-
+		} while (quantity > Products.productList().get(select).getAmountOfProduct());
+		
 		double lineTotal = (Products.productList().get(select).getPrice() * quantity);
 		System.out.printf("\n" + "Your running total is: $%.2f", lineTotal);
 		System.out.println(
@@ -70,7 +69,7 @@ public class CheckoutTerminalApp {
 			}
 			receipt(finalTotal, lineTotal, paySelect, itemsOrdered);
 		} else {
-			System.out.println("Error! Please enter a valid number");
+			System.out.println("Error! Please enter a valid number.");
 		}
 		// System.out.println("Would you like to redisplay the menu and make a new
 		// order? (Press 1 for yes, 2 for no)");
@@ -99,17 +98,18 @@ public class CheckoutTerminalApp {
 		System.out.println("Excellent choice! You ordered our:");
 		Products.productList().get(select).printInfo();
 		String itemsOrdered2 = Products.productList().get(select).itemsOrdered() + "\n" + itemsOrdered;
+
+		int quantity;
+		do {
 		System.out.println("How many of this style would you like?");
-		int quantity = scan.nextInt();
+		quantity = scan.nextInt();
 		if (Products.productList().get(select).getAmountOfProduct() >= quantity) {
-			System.out.println("You've ordered " + quantity + " hats");
+			System.out.println("You've ordered " + quantity + " of these hats.");
 		} else {
 			System.out.println("Error! We only have " + Products.productList().get(select).getAmountOfProduct()
-					+ " of this style in stock, please select an amount in range");
-			System.out.println("How many of this style would you like?");
-			quantity = scan.nextInt();
-			System.out.println("You've ordered " + quantity + " hats.");
+					+ " of this style in stock, please select an amount in range.");
 		}
+		} while (quantity > Products.productList().get(select).getAmountOfProduct());
 		double subTotal = (Products.productList().get(select).getPrice() * quantity + lineTotal);
 		// (sam) i think we have a sales tax field in the payment method we can pull
 		// from but how to do it...? we could potentially have this class extend Payment
