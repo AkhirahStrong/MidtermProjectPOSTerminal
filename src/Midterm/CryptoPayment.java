@@ -4,93 +4,60 @@ import java.util.Scanner;
 
 public class CryptoPayment extends Payment{
 
-	//Fields
-	protected String walletAddress;
-	protected String privateKey;
-	
-	
-		public CryptoPayment(double subtotal, double salesTax, double taxRate, double total, String walletAddress, String privateKey) {
-		super(subtotal, salesTax, taxRate, total);
-		this.walletAddress = walletAddress;
-		this.privateKey = privateKey;
-	}
-
-
-		
-		//override toString()
-		@Override
-		public String toString() {
-			return "CryptoPayment [walletAddress=" + walletAddress + ", privateKey=" + privateKey + "]";
-		}
+	 //Fields
+		protected String walletAddress;
 		
 		
-
-		
-		
-		//Methods
-		
-		//This method takes in user wallet address as well as the private key to validates the length of the string. 
-
-		public static void walletAddress() {
-			Scanner scan = new Scanner(System.in);
-			String address;
-			String key;
-			
-			
-			System.out.println("Please enter your wallet address:");
-			address = scan.nextLine();
-			
-			
-			while(address.length() < 10 || address.length() > 20){
-				
-				
-				if(address.length() < 10 || address.length() > 20) {
-					System.out.println("Please enter a valid address:");
-					address = scan.nextLine();
-					}	
-			}
-			
-			
-			System.out.println("Please enter your private key:");
-			key = scan.nextLine();
-			
-			while(key.length() >= 10 || key.length() <= 20){
-				
-				
-				 if(key.length() < 10 || key.length()> 20) {
-						System.out.println("Please inter a valid key:");
-						key = scan.nextLine();
-					}
-			}
-			// closed the scanner - sam
-			scan.close();
-		}
-		
-		public static String goodBye() {
-			String bye = "Thank you!";
-			return bye;
-		}
-
-
-		//getters / setters
-		public String getWalletAddress() {
-			return walletAddress;
-		}
-
-
-		public void setWalletAddress(String walletAddress) {
+			public CryptoPayment(double subtotal, double salesTax, double taxRate, double total, String walletAddress) {
+			super(subtotal, salesTax, taxRate, total);
 			this.walletAddress = walletAddress;
 		}
 
 
-		public String getPrivateKey() {
-			return privateKey;
-		}
+			
+			//override toString()
+			@Override
+			public String toString() {
+				return "CryptoPayment [walletAddress=" + walletAddress +  "]";
+			}
+			
+			
+
+			
+			
+			//Methods
+			
+			//This method takes in user wallet address as well as the private key to validates the length of the string. 
+
+			public static void walletAddress() {
+				Scanner scan = new Scanner(System.in);
+				
+				
+				System.out.println("Please enter your wallet address:");
+				String address = scan.nextLine();
+				
+				
+				while(address.length() < 23 || address.length() > 35){
+					
+					
+					if(address.length() < 23 || address.length() > 35) {
+						System.out.println("Please enter a valid address:");
+						address = scan.nextLine();
+						}	
+				}
+				scan.close();
+			}
 
 
-		public void setPrivateKey(String privateKey) {
-			this.privateKey = privateKey;
-		}
+			//getters / setters
+			public String getWalletAddress() {
+				return walletAddress;
+			}
+			
+			public void setWalletAddress(String walletAddress) {
+				this.walletAddress = walletAddress;
+			}
+
 		
 
 }
