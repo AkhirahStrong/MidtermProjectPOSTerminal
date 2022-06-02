@@ -40,10 +40,10 @@ public class CheckoutTerminalApp {
 			orderItems(lineTotal, itemsOrdered);
 		} else if (yn == 2) {
 			double salesTax = lineTotal * 0.06;
-			double subTotal = lineTotal * 1.06;
-			System.out.printf("Total: $%.2f", lineTotal);
+			double finalTotal = lineTotal * 1.06;
+			System.out.printf("Subtotal: $%.2f", lineTotal);
 			System.out.printf("\n" + "Sales Tax: $%.2f", + salesTax);
-			System.out.printf("\n" + "SubTotal: $%.2f", + subTotal);
+			System.out.printf("\n" + "Total: $%.2f", + finalTotal);
 			System.out.println("\nHow would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
 			String paySelect = " ";
 			int payNum = scan.nextInt();
@@ -53,7 +53,7 @@ public class CheckoutTerminalApp {
 				 creditCardPay.runCredit();
 			}else if(payNum == 2) {
 				paySelect = "Cash";
-				CashPayment cashPay = new CashPayment(subTotal, 0, 0, 20);
+				CashPayment cashPay = new CashPayment(finalTotal, 0, 0, 20);
 				cashPay.change();
 			}else if(payNum == 3) {
 				paySelect = "Check";
@@ -64,7 +64,7 @@ public class CheckoutTerminalApp {
 				CryptoPayment.walletAddress();
 				CryptoPayment.goodBye();
 			}
-			receipt(lineTotal, subTotal, paySelect, itemsOrdered);
+			receipt(finalTotal, lineTotal, paySelect, itemsOrdered);
 		} else {
 			System.out.println("Error! Please enter a valid number");
 		}
@@ -104,13 +104,13 @@ public class CheckoutTerminalApp {
 			 quantity = scan.nextInt();
 			 System.out.println("You've ordered " + quantity + " hats.");
 		}
-		double totalFinal = (Products.productList().get(select).getPrice() * quantity + lineTotal);
+		double subTotal = (Products.productList().get(select).getPrice() * quantity + lineTotal);
 		// (sam) i think we have a sales tax field in the payment method we can pull from but how to do it...? we could potentially have this class extend Payment as well?
-		double salesTax = totalFinal * 0.06;
-		double subTotal = totalFinal * 1.06;
-		System.out.printf("\n" +"Total: $%.2f", totalFinal);
+		double salesTax = subTotal * 0.06;
+		double finalTotal = subTotal * 1.06;
+		System.out.printf("\n" +"SubTotal: $%.2f", subTotal);
 		System.out.printf("\n" + "Sales Tax: $%.2f", salesTax);
-		System.out.printf("\n" + "SubTotal: $%.2f", subTotal);
+		System.out.printf("\n" + "Total: $%.2f", finalTotal);
 		System.out.println("\nHow would you like to pay today?\n1. Credit\n2. Cash\n3. Check\n4. Crypto");
 		String paySelect = " ";
 		int payNum = scan.nextInt();
@@ -120,7 +120,7 @@ public class CheckoutTerminalApp {
 			 creditCardPay.runCredit();
 		}else if(payNum == 2) {
 			paySelect = "Cash";
-			CashPayment cashPay = new CashPayment(subTotal, 0, 0, 20);
+			CashPayment cashPay = new CashPayment(finalTotal, 0, 0, 20);
 			cashPay.change();
 		}else if(payNum == 3) {
 			paySelect = "Check";
@@ -131,13 +131,13 @@ public class CheckoutTerminalApp {
 			CryptoPayment.walletAddress();
 			CryptoPayment.goodBye();
 		}
-		receipt(totalFinal, subTotal, paySelect, itemsOrdered2);
+		receipt(finalTotal, subTotal, paySelect, itemsOrdered2);
 	}
 	public static void receipt(double total, double subTotal, String paySelect, String itemsOrdered) {
 		System.out.println("\nRECIEPT INFO");
 		System.out.println("Items ordered: " + "\n" + itemsOrdered);
-		System.out.println("Total: " + total);
 		System.out.println("Subtotal: " + subTotal);
+		System.out.println("Total: " + total);
 		System.out.println("Payment Method: " + paySelect);
 		
 	}
