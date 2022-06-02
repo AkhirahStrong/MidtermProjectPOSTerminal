@@ -65,7 +65,6 @@ public class CheckoutTerminalApp {
 			} else if (payNum == 4) {
 				paySelect = "Crypto";
 				CryptoPayment.walletAddress();
-				CryptoPayment.goodBye();
 			}
 			receipt(finalTotal, lineTotal, paySelect, itemsOrdered);
 		} else {
