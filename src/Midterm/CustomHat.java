@@ -34,20 +34,20 @@ public class CustomHat extends Products {
 		String name = scan.nextLine();
 		name = name.substring(0, 1).toUpperCase() + name.substring(1);
 		setName(name);
-		if (!getCategory().equalsIgnoreCase("Fitted") ) {
+		if (getCategory().equalsIgnoreCase("Fitted") ) {
 		System.out.println("What size would you like? S/M/L/XL:");
 		String size = scan.nextLine().toUpperCase();
 		setSize(size);
 		}
-		ArrayList<Products> hat = new ArrayList<Products>();
-		Products custom = new Products(0, getName(), getDescription(), getCategory(), 45, getSize(), 1);
+		ArrayList<CustomHat> hat = new ArrayList<CustomHat>();
+		CustomHat custom = new CustomHat(0, getName(), getDescription(), getCategory(), 45, getSize(), 1);
 		hat.add(custom);
+		
 		
 	}
 	
-	
 	public void printInfo() {
-		System.out.println("(" + getMenuNumber() + ") " + getCategory() + ": " + getName() + ", " + getSize() + ", " + getDescription()+ ", $" + String.format("%.2f", getPrice()));
+		System.out.println(getCategory() + ": " + getName() + ", " + getSize() + ", " + getDescription()+ ", $" + String.format("%.2f", getPrice()));
 	}
 	public String itemsOrdered() {
 		return(getName() + ", " + getCategory() + ", " + String.format("%.2f", getPrice()));
