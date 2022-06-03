@@ -58,6 +58,14 @@ public class CryptoPayment extends Payment{
 				this.walletAddress = walletAddress;
 			}
 
+
+
+			@Override
+			public void pay() {
+			
+				
+			}
+
 		
 
 }

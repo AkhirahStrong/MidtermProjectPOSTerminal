@@ -13,8 +13,8 @@ public class CashPayment extends Payment {
 		super(subtotal, salesTax, 0.06, total);
 
 	}
-	
-	public void change() {
+	@Override
+	public void pay() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter cash amount:");
 		double amountTendered = scan.nextDouble();

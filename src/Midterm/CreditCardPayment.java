@@ -98,8 +98,8 @@ public class CreditCardPayment extends Payment {
 		super(subtotal, salesTax, taxRate, total);
 
 	}
-
-	public void runCredit() {
+@Override
+	public void pay() {
 
 		// card number validation
 		while (cardAccepted == false) {

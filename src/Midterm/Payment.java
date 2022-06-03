@@ -9,6 +9,7 @@ public abstract class Payment {
 	protected double taxRate = .06;
 	protected double total;
 	
+	public abstract void pay();
 	
 	//Constructor
 	public Payment(double subtotal, double salesTax, double taxRate, double total) {
