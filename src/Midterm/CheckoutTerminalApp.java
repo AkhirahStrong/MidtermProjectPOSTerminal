@@ -11,7 +11,7 @@ public class CheckoutTerminalApp {
 		do {
 		System.out.println("Welcome to The Hat Shop! \nHere's what we have for sale: \n");
 		Products.productListDisplay();
-		System.out.println("\nPlease select which hat you would like to purchase (1-12):");
+		System.out.println("\nPlease select which hat you would like to purchase (1-15):");
 		int select = scan.nextInt() - 1;
 		System.out.println("Excellent choice! You ordered our:");
 		Products.productList().get(select).printInfo();
@@ -80,7 +80,7 @@ public class CheckoutTerminalApp {
 		
 	} 
 	
-
+	
 	//V METHODS V
 
 	public static void orderItems(double lineTotal, String itemsOrdered) {
@@ -89,7 +89,7 @@ public class CheckoutTerminalApp {
 		int hasLoyaltyCard;
 		System.out.println();
 		Products.productListDisplay();
-		System.out.println("\nPlease select which hat you would like to purchase (1-12):");
+		System.out.println("\nPlease select which hat you would like to purchase (1-15):");
 		int select = scan.nextInt() - 1;
 		System.out.println("Excellent choice! You ordered our:");
 		Products.productList().get(select).printInfo();
@@ -145,11 +145,14 @@ public class CheckoutTerminalApp {
 	public static void receipt(double total, double subTotal, String paySelect, String itemsOrdered, int hasLoyaltyCard) {
 		System.out.println("Thank you for your business!");
 		System.out.println("\nRECEIPT INFO");
+		System.out.println("============");
 		System.out.println("Items ordered: " + "\n" + itemsOrdered);
+		System.out.println("~~~~~~~~~~~~");
 		System.out.printf("Subtotal: $%.2f", subTotal);
 		System.out.printf("\n" + "Total: $%.2f", total);
 		System.out.println("\nPayment Method: " + paySelect);
 		if (hasLoyaltyCard == 1) {
+		System.out.println("~~~~~~~~~~~~");
 		System.out.println("The Hat Shop points earned: " + (int)subTotal/3);
 		}
 	}
