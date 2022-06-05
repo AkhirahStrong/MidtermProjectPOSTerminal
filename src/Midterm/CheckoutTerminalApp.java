@@ -56,15 +56,15 @@ public class CheckoutTerminalApp {
 			if (payNum == 1) {
 				paySelect = "Credit";
 				CreditCardPayment creditCardPay = new CreditCardPayment(lineTotal, 0, 0, 25.00);
-				creditCardPay.runCredit();
+				creditCardPay.pay();
 			} else if (payNum == 2) {
 				paySelect = "Cash";
 				CashPayment cashPay = new CashPayment(0, 0, 0, finalTotal);
-				cashPay.change();
+				cashPay.pay();
 			} else if (payNum == 3) {
 				paySelect = "Check";
 				CheckPayment checkPay = new CheckPayment(85, 77, 88, 99);
-				checkPay.check();
+				checkPay.pay();
 			} else if (payNum == 4) {
 				paySelect = "Crypto";
 				CryptoPayment.walletAddress();
@@ -126,15 +126,15 @@ public class CheckoutTerminalApp {
 		if (payNum == 1) {
 			paySelect = "Credit";
 			CreditCardPayment creditCardPay = new CreditCardPayment(lineTotal, 0, 0, 25.00);
-			creditCardPay.runCredit();
+			creditCardPay.pay();
 		} else if (payNum == 2) {
 			paySelect = "Cash";
 			CashPayment cashPay = new CashPayment(0, 0, 0, finalTotal);
-			cashPay.change();
+			cashPay.pay();
 		} else if (payNum == 3) {
 			paySelect = "Check";
 			CheckPayment checkPay = new CheckPayment(85, 77, 88, 99);
-			checkPay.check();
+			checkPay.pay();
 		} else if (payNum == 4) {
 			paySelect = "Crypto";
 			CryptoPayment.walletAddress();

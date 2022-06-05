@@ -11,8 +11,8 @@ public class CheckPayment extends Payment {
 	}
 
 
-
-	public void check() {
+@Override
+	public void pay() {
 		System.out.println("Please input a check number: ");
 		Scanner scan = new Scanner(System.in);
 		String checkNum;
