@@ -26,7 +26,7 @@ public class CheckPayment extends Payment {
 			}
 
 		} while (checkNum.length() < 3 || checkNum.length() > 5);
-//		scan.close();
+	scan.close();
 	}
 
 }
