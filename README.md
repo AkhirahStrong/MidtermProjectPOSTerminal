@@ -19,7 +19,7 @@ As a group assignment, we were instructed to write a cash register or self-servi
 
 **Special Features** 
 
-What makes our code different is that we decided to modernize our POS system, and chose to accept Crypto Currency as a payment option.  We also added loyalty points for returning customers. 
+What makes our project different is that we decided to modernize our POS system, and chose to accept Crypto Currency as a payment option.  We also added loyalty points for returning customers. 
 
 **Special Functions**
 
