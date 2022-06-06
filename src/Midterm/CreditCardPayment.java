@@ -58,8 +58,7 @@ public class CreditCardPayment extends Payment {
 	// debit variables
 	int debitOrCredit = 1;
 
-	// getters - do we need setters as we are not storing this information within
-	// the system????
+	// getters/setters for encapsulation within the credit-specific payment class
 
 	public String getCardNumber() {
 		return cardNumber;

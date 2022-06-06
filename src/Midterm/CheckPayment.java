@@ -20,7 +20,7 @@ public class CheckPayment extends Payment {
 			checkNum = scan.nextLine();
 
 			if (checkNum.length() >= 3 && checkNum.length() <= 5) {
-				System.out.println("Thank you for your business!");
+				System.out.println("Check number is accepted");
 			} else {
 				System.out.println("Error! Please enter a valid check ID number. (3-5 digits)");
 			}

@@ -30,13 +30,6 @@ public class CashPayment extends Payment {
 
 	}
 
-	public double getAmountTendered() {
-		return amountTendered;
-	}
-
-	public void setAmountTendered(double amountTendered) {
-		this.amountTendered = amountTendered;
-	}
 
 	public double getChangeDue() {
 		return changeDue;
